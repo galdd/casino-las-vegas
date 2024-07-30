@@ -1,16 +1,16 @@
-import express, { Request, Response } from "express";
-import { runRound, cashOut } from "../../services/casino.service.js";
+import express, { Request, Response } from 'express';
+import { runRound, cashOut } from '../../services/casino.service.js';
 
 const router = express.Router();
 
-declare module "express-session" {
+declare module 'express-session' {
   interface SessionData {
     isStarted: boolean;
     remainingCredits: number;
   }
 }
 
-router.post("/check-session", (req: Request, res: Response) => {
+router.post('/check-session', (req: Request, res: Response) => {
   try {
     res.json({
       isSessionInitialized: !!req.session.isStarted,
@@ -21,12 +21,12 @@ router.post("/check-session", (req: Request, res: Response) => {
   }
 });
 
-router.post("/start", (req: Request, res: Response) => {
+router.post('/start', (req: Request, res: Response) => {
   try {
     if (req.session.isStarted) {
       return res.status(400).json({
         error: {
-          message: "Cannot restart game session that was already started",
+          message: 'Cannot restart game session that was already started',
         },
       });
     }
@@ -41,12 +41,12 @@ router.post("/start", (req: Request, res: Response) => {
   }
 });
 
-router.post("/roll", (req: Request, res: Response) => {
+router.post('/roll', (req: Request, res: Response) => {
   try {
     if (!req.session.isStarted) {
       return res.status(400).json({
         error: {
-          message: "No active game session. Please start a new game.",
+          message: 'No active game session. Please start a new game.',
         },
       });
     }
@@ -54,7 +54,7 @@ router.post("/roll", (req: Request, res: Response) => {
     if (remainingCredits <= 0) {
       return res.status(400).json({
         error: {
-          message: "No credits left. Cannot play further.",
+          message: 'No credits left. Cannot play further.',
         },
       });
     }
@@ -66,12 +66,12 @@ router.post("/roll", (req: Request, res: Response) => {
   }
 });
 
-router.post("/cashout", (req: Request, res: Response) => {
+router.post('/cashout', (req: Request, res: Response) => {
   try {
     if (!req.session.isStarted) {
       return res.status(400).json({
         error: {
-          message: "No active game session. Please start a new game.",
+          message: 'No active game session. Please start a new game.',
         },
       });
     }

@@ -29,11 +29,19 @@ export const rollSlot = async (): Promise<RollResult> => {
 };
 
 export const cashOut = async (): Promise<CashOutResult> => {
-  const response = await axios.post<CashOutResult>(`${API_URL}/cashout`, {}, { withCredentials: true });
+  const response = await axios.post<CashOutResult>(
+    `${API_URL}/cashout`,
+    {},
+    { withCredentials: true }
+  );
   return response.data;
 };
 
 export const checkSession = async (): Promise<SessionData> => {
-  const response = await axios.post<SessionData>(`${API_URL}/check-session`, {}, { withCredentials: true });
+  const response = await axios.post<SessionData>(
+    `${API_URL}/check-session`,
+    {},
+    { withCredentials: true }
+  );
   return response.data;
 };

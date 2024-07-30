@@ -6,8 +6,6 @@ interface RollResult {
   remainingCredits: number;
 }
 
-
-
 export const runRound = (remainingCredits: number): RollResult => {
   if (remainingCredits === 0) {
     throw new Error('No credits left');
@@ -33,14 +31,16 @@ export const runRound = (remainingCredits: number): RollResult => {
   return { roll: result.resultingSymbols, isWinningRoll: true, remainingCredits };
 };
 
-export const cashOut = (remainingCredits: number): {
+export const cashOut = (
+  remainingCredits: number
+): {
   remainingCredits: number;
   cashedOutCredits: number;
 } => {
   // TODO: Implement actual cash out logic here cashedOutCredit 💰💰💰
   return {
     remainingCredits: 0,
-    cashedOutCredits: remainingCredits
+    cashedOutCredits: remainingCredits,
   };
 };
 

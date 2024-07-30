@@ -3,7 +3,6 @@ import { describe, it, expect } from 'vitest';
 import { runRound } from '../services/casino.service.js';
 
 describe('Casino Service', () => {
-  
   it('should decrease credits by 1 on each roll', () => {
     const initialCredits = 10;
     const result = runRound(initialCredits);
@@ -24,5 +23,4 @@ describe('Casino Service', () => {
       expect(result.remainingCredits).toBe(initialCredits - 1);
     }
   });
-
 });

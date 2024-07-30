@@ -31,7 +31,7 @@ A slot machine game built with React and Node.js.
 
 ### Client-side
 
-- [x] Include a super simple, minimalistic table with 3 blocks in 1 row. *(Handled in `GameSection.tsx` and `SlotMachine.tsx`)*
+- [x] Include a super simple, minimalistic table with 3 blocks in 1 row. *(Handled in `GameSection.tsx` and `SlotMachine.tsx`, ****Not in a classic table structure, but serving the same purpose)*
 - [x] Include a button next to the table that starts the game. *(Handled in `GameSection.tsx`)*
 - [x] The components for each sign can be a starting letter (C for cherry, L for lemon, O for orange, W for watermelon). *(Handled in `SlotMachine.tsx`)*
 - [x] After submitting a roll request to the server, all blocks should enter a spinning state (can be 'X' character spinning). *(Handled in `SlotMachine.tsx`)*

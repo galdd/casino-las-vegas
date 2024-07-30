@@ -15,15 +15,22 @@ const SlotMachine = ({ result, isSpinning }: SlotMachineProps) => {
       return;
     }
 
+    const timers: NodeJS.Timeout[] = [];
+
     result.forEach((symbol, index) => {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setVisibleResults(prev => {
           const newResults = [...prev];
           newResults[index] = symbol;
           return newResults;
         });
       }, (index + 1) * 1000);
+      timers.push(timer);
     });
+
+    return () => {
+      timers.forEach(timer => clearTimeout(timer));
+    };
   }, [isSpinning, result]);
 
   return (

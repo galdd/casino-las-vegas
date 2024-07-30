@@ -1,0 +1,57 @@
+.credits {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* Center the buttons */
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #1890ff;
+  color: white;
+  border: none;
+}
+
+.btn-default {
+  background-color: #f0f0f0;
+  color: black;
+  border: none;
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Media query for responsiveness */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row-reverse; /* GameSection on the right and WinningGuide on the left for desktop */
+  }
+
+  .sidebar {
+    width: 300px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column; /* Stack GameSection above WinningGuide on smaller screens */
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

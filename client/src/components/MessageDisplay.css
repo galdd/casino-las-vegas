@@ -1,0 +1,15 @@
+.message {
+  margin-top: 10px;
+}
+
+.underline-black {
+  text-decoration: underline black;
+}
+
+.underline-red {
+  text-decoration: underline red;
+}
+
+.underline-green {
+  text-decoration: underline green;
+}

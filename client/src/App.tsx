@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { Layout } from 'antd';
+import WinningGuide from './components/WinningGuide';
+import GameSection from './components/GameSection';
+import SessionManager from './components/SessionManager';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const { Header } = Layout;
 
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="layout">
+      <Header className="header">
+        <h2>Casino Las Vegas</h2>
+      </Header>
+      <div className="container">
+        <main className="main-content">
+          <div className="content">
+            <SessionManager>
+              {({
+                remainingCredits,
+                isSpinning,
+                isWinningRoll,
+                result,
+                messageText,
+                handleNewGame,
+                handleRoll,
+                handleCashOut,
+                isSessionInitialized,
+              }) => (
+                <GameSection
+                  remainingCredits={remainingCredits}
+                  isSpinning={isSpinning}
+                  isWinningRoll={isWinningRoll}
+                  messageText={messageText}
+                  result={result}
+                  handleNewGame={handleNewGame}
+                  handleRoll={handleRoll}
+                  handleCashOut={handleCashOut}
+                  isSessionInitialized={isSessionInitialized}
+                />
+              )}
+            </SessionManager>
+          </div>
+        </main>
+        <aside className="sidebar">
+          <WinningGuide />
+        </aside>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;

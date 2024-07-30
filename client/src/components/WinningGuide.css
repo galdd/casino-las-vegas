@@ -1,0 +1,16 @@
+.legend-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.legend-table th,
+.legend-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.legend-table th {
+  background-color: #f2f2f2;
+}

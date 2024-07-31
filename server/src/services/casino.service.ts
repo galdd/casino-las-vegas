@@ -15,20 +15,24 @@ export const runRound = (remainingCredits: number): RollResult => {
 
   let result = performRoll();
 
-  if (!result.isWinningRoll) {
-    return { roll: result.resultingSymbols, isWinningRoll: false, remainingCredits };
+  if (result.isWinningRoll) {
+    const shouldReroll =
+      (remainingCredits >= 40 && remainingCredits <= 60 && Math.random() < 0.3) ||
+      (remainingCredits > 60 && Math.random() < 0.6);
+
+    if (shouldReroll) {
+      result = performRoll();
+    }
   }
 
-  if (remainingCredits >= 40 && remainingCredits <= 60 && Math.random() < 0.3) {
-    result = performRoll();
-  } else if (remainingCredits > 60 && Math.random() < 0.6) {
-    result = performRoll();
+  if (!result.isWinningRoll) {
+    return { roll: result.resultingSymbols, isWinningRoll: false, remainingCredits };
   }
 
   const reward = calculateReward(result.resultingSymbols[0]);
   remainingCredits += reward;
 
-  return { roll: result.resultingSymbols, isWinningRoll: true, remainingCredits };
+  return { roll: result.resultingSymbols, isWinningRoll: result.isWinningRoll, remainingCredits };
 };
 
 export const cashOut = (

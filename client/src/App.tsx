@@ -16,31 +16,7 @@ const App = () => {
       <div className="container">
         <main className="main-content">
           <div className="content">
-            <SessionManager>
-              {({
-                remainingCredits,
-                isSpinning,
-                isWinningRoll,
-                result,
-                messageText,
-                handleNewGame,
-                handleRoll,
-                handleCashOut,
-                isSessionInitialized,
-              }) => (
-                <GameSection
-                  remainingCredits={remainingCredits}
-                  isSpinning={isSpinning}
-                  isWinningRoll={isWinningRoll}
-                  messageText={messageText}
-                  result={result}
-                  handleNewGame={handleNewGame}
-                  handleRoll={handleRoll}
-                  handleCashOut={handleCashOut}
-                  isSessionInitialized={isSessionInitialized}
-                />
-              )}
-            </SessionManager>
+            <SessionManager>{GameSection}</SessionManager>
           </div>
         </main>
         <aside className="sidebar">
